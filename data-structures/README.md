@@ -1,5 +1,5 @@
 
-#자료구조
+# 자료구조
 ---
-###LinkedList
+### LinkedList
 ---
