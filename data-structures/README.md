@@ -4,32 +4,97 @@
 ## LinkedList
 ---
 
-### HashTable
+## HashTable
 
-HashTable 이란?
+* HashTable 이란?
 
-Key와 Value를 1:1로 연관지어 저장하는 자료구조 (연관배열 구조)
-Key를 이용하여 Value 도출
+  * Key와 Value를 1:1로 연관지어 저장하는 자료구조 (연관배열 구조)
+  * Key를 이용하여 Value 도출
 
-HashTable의 구성요소
+* HashTable의 구성요소
 
-Key
+  * Key
 
-고유한 값
+    * 고유한 값
 
-HashFunction
+  * HashFunction
 
-Key를 Hash로 바꿔주는 역할   ?? 왜 Key를 Hash로 바꿔줘야 할까??
-해시 충돌(서로 다른 Key가 같은 Hash가 되는 경우)이 발생할 확률을 최대한 줄이는 함수를 만드는 것이 중요
+    * Key를 Hash로 바꿔주는 역할   ?? 왜 Key를 Hash로 바꿔줘야 할까??
+    
+    *  충돌(서로 다른 Key가 같은 Hash가 되는 경우)이 발생할 확률을 최대한 줄이는 함수를 만드는 것이 중요
 
-Hash
+  * Hash
 
-Hash Function의 결과
+    * Hash Function의 결과
 
-저장소에서 Value와 매칭되어 저장
+    * 저장소에서 Value와 매칭되어 저장
 
-Value
+  * Value
 
-저장소에 최종적으로 저장되는 값
+    * 저장소에 최종적으로 저장되는 값
 
-키와 매칭되어 저장, 삭제, 검색, 접근 가능
+    * 키와 매칭되어 저장, 삭제, 검색, 접근 가능
+    
+* HashTable 장점
+
+  * 적은 리소스로 많은 데이터를 효율적으로 관리 가능
+    * ex. HDD. Cloud에 있는 많은 데이터를 Hash로 매핑하여 작은 크기의 시 메모리로 프로세스 관리 가능
+  * 배열의 인덱스를 사용하기 때문에 빠른 검색, 삽입, 삭제 (O(1))
+    * HashTable의 경우 인덱스는 데이터의 고유 위치이기 때문에 삽입 삭제 시 다른 데이터를 이동할 필요가 없어 삽입, 삭제도 빠른 속도 가능
+  * Key와 Hash에 연관성이 없어 보안 유리
+  * 데이터 캐싱에 많이 사용
+    * get, put 기능에 캐시 로직 추가 시 자주 hit하는 데이터 바로 검색 가능
+  * 중복 제거 유용
+
+* HashTable 단점
+  * 충돌 발생 가능성
+  * 공간 복잡도 증가
+  * 순서 무시
+  * 해시 함수에 의존
+  
+* HashTable vs HashMap
+  * Key-Value 구조 및 Key에 대한 Hash로 Value 관리하는 것은 동일
+  * HashTable
+    * 동기
+    * Key-Value 값으로 null 미허용 (Key가 hashcode(), equals()를 사용하기 때문)
+    * 보조 Hash Function과 separating Chaining을 사용해서 비교적 충돌 덜 발생 (Key의 Hash 변형)
+  * HashMap
+    * 비동기 (멀티 스레드 환경에서 주의)
+    * Key-Value 값으로 null 허용
+
+* HashTable 성능
+  
+  탐색, 삽입, 삭제 모두 평균 값이 O(1)
+  최악의 값은 O(N)
+  
+    
+---
+
+## Stack
+
+* 스택(Stack) 이란?
+  * 한 쪽 끝에서만 자료를 넣고 뺄 수 있는 LIFO(Last In First Out) 형식의 자료 구조
+  
+* 스택(Stack)의 연산
+  * 스택은 LIFO 방식으로 가장 최근에 스텍에 추가한 항목이 가장 먼저 제거될 항목
+    * pop() : 스택에서 가장 위에 있는 항목을 제거한다.
+    * push() : item 하나를 스택의 가장 윗 부분에 추가한다.
+    * peek() : 스택의 가장 위에 있는 항목을 반환한다.
+    * isEmpty() : 스택이 비어 있을 때 true를 반환한다.
+    
+* 스택이 쓰이는 곳은???
+  * 재귀 알고리즘을 사용하는 경우 스택이 유용하다.
+  
+      * 재귀 알고리즘
+        * 재귀적으로 함수를 호출해야 하는 경우에 임시 데이터를 스택에 넣어준다
+        * 재귀함수를 빠져 나와 퇴각 검색(backtrack)을 할 때는 스택에 넣어 두었던 임시 데이터를 빼 줘야 한다.
+        * 스택은 이런 일련의 행위를 직관적으로 가능하게 해준다.
+        * 또한 스택은 재귀 알고리즘을 반복적 형태(iterative)를 통해서 구현할 수 있게 해준다.
+      * 웹 브라우저 방문기록 (뒤로가기 기능)
+      * 실행 취소 (undo)
+      * 역순 문자열 만들기
+      * 수식의 괄호 검사 (연산자 우선순위 표현을 위한 괄호 검사)
+        * ex) 올바른 괄호 문자열(VPS Valid Parenthesis String) 판단하기
+      * 후위 표기법 계산
+
+---
